@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10121a">
+  <meta name="description" content="Jino AI — your AI assistant for learning, coding and everyday questions.">
+  <title>Jino AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="./" aria-label="Jino AI home">
+        <span class="brand-icon">J</span>
+        <span>Jino AI</span>
+      </a>
+
+      <button id="newChatBtn" class="primary-btn">＋ New chat</button>
+
+      <p class="section-label">CHAT HISTORY</p>
+      <div id="chatHistory" class="chat-history">
+        <p class="muted small">Sign in to save your chats.</p>
+      </div>
+
+      <div class="sidebar-bottom">
+        <button id="themeBtn" class="secondary-btn">☀️ Toggle theme</button>
+        <button id="loginBtn" class="secondary-btn">Sign in / Register</button>
+        <button id="logoutBtn" class="secondary-btn hidden">Sign out</button>
+        <p id="userStatus" class="muted small">Not signed in</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="menuBtn" class="icon-btn" aria-label="Toggle sidebar">☰</button>
+        <strong class="mobile-brand">Jino AI</strong>
+        <select id="languageSelect" aria-label="Response language">
+          <option value="en">English</option>
+          <option value="tl">Tagalog</option>
+        </select>
+      </header>
+
+      <section id="conversation" class="conversation">
+        <div id="welcome" class="welcome">
+          <div class="welcome-logo">J</div>
+          <h1>What can I help you with?</h1>
+          <p class="muted">Ask questions, study, write code, or explore ideas.</p>
+
+          <div class="suggestions">
+            <button class="suggestion" data-prompt="Explain a difficult school topic in simple words.">
+              <span>📚</span><strong>Help me study</strong>
+              <small>Understand a topic</small>
+            </button>
+            <button class="suggestion" data-prompt="Help me write and debug code.">
+              <span>💻</span><strong>Write code</strong>
+              <small>Build a project</small>
+            </button>
+            <button class="suggestion" data-prompt="Give me creative project ideas.">
+              <span>💡</span><strong>Get ideas</strong>
+              <small>Explore possibilities</small>
+            </button>
+            <button class="suggestion" data-prompt="Ipaliwanag sa simpleng Tagalog kung ano ang artificial intelligence.">
+              <span>🌏</span><strong>Ask in Tagalog</strong>
+              <small>Learn in your language</small>
+            </button>
+          </div>
+        </div>
+        <div id="messages" class="messages" aria-live="polite"></div>
+      </section>
+
+      <section class="composer-area">
+        <form id="chatForm" class="composer">
+          <textarea id="messageInput" rows="1" maxlength="4000"
+            placeholder="Message Jino AI..." aria-label="Your message" required></textarea>
+          <button id="sendBtn" type="submit" aria-label="Send message">➤</button>
+        </form>
+        <p id="notice" class="notice" role="status">
+          Jino AI can make mistakes. Check important information.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <div id="authModal" class="modal hidden" role="dialog"
+       aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal-card">
+      <button id="closeAuthBtn" class="modal-close" aria-label="Close">✕</button>
+      <h2 id="authTitle">Welcome to Jino AI</h2>
+      <p class="muted">Sign in or create an account to save your chats.</p>
+
+      <form id="authForm">
+        <label for="authEmail">Email address</label>
+        <input id="authEmail" type="email" autocomplete="email"
+          placeholder="you@example.com" required>
+
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" minlength="6"
+          autocomplete="current-password" placeholder="At least 6 characters"
+          required>
+
+        <button id="authSubmitBtn" class="primary-btn full" type="submit">
+          Sign in
+        </button>
+      </form>
+
+      <button id="authModeBtn" class="text-btn" type="button">
+        Need an account? Register
+      </button>
+      <p id="authError" class="error-text" role="alert"></p>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
